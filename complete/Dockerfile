@@ -11,7 +11,7 @@
 FROM docker.io/maven:3.9.9-amazoncorretto-8-alpine AS build
 WORKDIR /app
 RUN addgroup -S spring && adduser -S spring -G spring
-USER spring:spring
+USER root
 ADD . .
 RUN mvn -DskipTests clean package 
 
