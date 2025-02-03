@@ -8,13 +8,13 @@
 # ENTRYPOINT ["java","-cp","app:app/lib/*","hello.Application"]
 
 
-FROM docker.io/maven:3.9.9-amazoncorretto-8-alpine AS build
+FROM docker.io/maven:3.9.9-amazoncorretto-17-alpine AS build
 WORKDIR /app
 RUN addgroup -S spring && adduser -S spring -G spring
 USER root
 ADD . .
 RUN mvn -DskipTests clean package 
 
-FROM docker.io/openjdk:8-jdk-alpine
+FROM docker.io/openjdk:17-jdk-alpine
 COPY --from=build /app/target/*.jar /app/runner.jar
 ENTRYPOINT ["java","-cp","app:app/lib/*","hello.Application"]
