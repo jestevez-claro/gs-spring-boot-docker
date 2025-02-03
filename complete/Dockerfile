@@ -8,7 +8,7 @@
 # ENTRYPOINT ["java","-cp","app:app/lib/*","hello.Application"]
 
 
-FROM docker.io/maven:3-eclipse-temurin-17 AS build
+FROM docker.io/maven:3.9.9-amazoncorretto-8-alpine AS build
 WORKDIR /app
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
