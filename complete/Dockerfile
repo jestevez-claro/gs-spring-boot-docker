@@ -17,4 +17,4 @@ RUN mvn -DskipTests clean package
 
 FROM docker.io/openjdk:17-jdk-alpine
 COPY --from=build /app/target/*.jar /app/runner.jar
-ENTRYPOINT ["java","-cp","app:app/lib/*","hello.Application"]
+CMD ["java", "-jar", "/app/runner.jar"]
